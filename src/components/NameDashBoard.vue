@@ -10,22 +10,28 @@
     </form>
 
     <div class="map-container">
-      <BrazilianMap></BrazilianMap>
+      <DashBoardItemContainer :childComponent="BrazilianMap" windowName="Mapa" class="map-container"/>
     </div>
   </div>
 </template>
 
 <script setup>
   import BrazilianMap from './BrazilianMap.vue';
+  import DashBoardItemContainer from './DashBoardItemContainer.vue';
   const handleSubmit = () => {
     console.log('Formulário enviado!')
     // Você pode adicionar aqui a lógica que quiser ao enviar o formulário
   }
 
-
 </script>
 
 <style scoped>
+
+.map-container {
+  height: 560px;
+  width: 500px;
+  padding: 28px;
+}
 
 form {
   display: flex;
