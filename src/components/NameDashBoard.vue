@@ -10,18 +10,28 @@
     </form>
 
     <div class="top-dashboard">
-      <div>
-        <DashBoardItemContainer :childComponent="BrazilianMap" windowName="Mapa" class="map-container"/>
-      </div>
+      <DashBoardItemContainer 
+        :childComponent="BrazilianMap" 
+        windowName="Mapa" 
+        class="map-container"
+      />
+
+      <DashBoardItemContainer v-if="resutRankingGeral"
+        :childComponent="RankingNames" 
+        windowName="Ranking de nomes no brasil" 
+        class="ranking-geral-container" 
+        :childProps="{data:resutRankingGeral}"
+      />
+
     </div>
 
     <div class="bottom-dashboard">
-      <div v-if="resultado">
+      <div v-if="resultName">
         <DashBoardItemContainer 
           :childComponent="BarGraph" 
           windowName="Grafico histórico" 
           class="graph-container"
-          :childProps="{ data:resultado }"
+          :childProps="{ data:resultName }"
         />
       </div>
     </div>
@@ -30,20 +40,22 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   import BrazilianMap from './BrazilianMap.vue';
   import DashBoardItemContainer from './DashBoardItemContainer.vue';
   import BarGraph from './BarGraph.vue';
-  import { getNameFreq, addPercentFreq } from '@/services/ibgeService';
+  import { getNameFreq, addPercentFreq, getNameRankingGeral } from '@/services/ibgeService';
+  import RankingNames from './RankingNames.vue';
 
   const name = ref('');
-  const resultado = ref(null)//pode me apagar dps e tudo que envolve tem que passar direto pro graph
+  const resultName = ref(null);//pode me apagar dps e tudo que envolve tem que passar direto pro graph
+  const resutRankingGeral = ref(null);
 
   async function getFreq() {
     try {
       const data = await getNameFreq(name.value);
       console.log('Dados do IBGE:', data);
-      resultado.value = addPercentFreq(data); // <- salva os dados aqui
+      resultName.value = addPercentFreq(data); // <- salva os dados aqui
       return data;
     } catch (error) {
       console.error('Erro ao buscar os dados:', error);
@@ -51,13 +63,25 @@
     }
   }
 
+  async function defineName() {
+    console.log('Nome: ', name.value);
 
-async function defineName() {
-  console.log('Nome: ', name.value);
+    const resultName = await getFreq(); // <-- AQUI você espera o valor real
+    console.log('ResultName final:', resultName);
+  }
 
-  const resultado = await getFreq(); // <-- AQUI você espera o valor real
-  console.log('Resultado final:', resultado);
-}
+  async function getNameRankingGeralFront() {
+    try{
+      resutRankingGeral.value = await getNameRankingGeral();
+    } catch (error){
+      console.error('Erro ao buscar dado', error);
+    }
+  }
+
+  onMounted(() =>{
+    getNameRankingGeralFront();
+
+  })
 
 </script>
 
@@ -69,7 +93,8 @@ async function defineName() {
 }
 
 .top-dashboard{
-  
+  display: flex;
+  flex-direction: row;
 }
 
 .map-container {
