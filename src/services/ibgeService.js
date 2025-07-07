@@ -24,6 +24,17 @@ export async function getNameRankingGeral() {
   }
 }
 
+export async function getNameRankingUF(cod) {
+  try {
+    const response = await axios.get(`${URL_RANKING}?localidade=${cod}`);
+    console.log('teste', response.data)
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar dados do IBGE:', error);
+    throw error;
+  }
+}
+
 
 
 export function addPercentFreq(json) {

@@ -1,75 +1,77 @@
 <template>
   <div class="map-wrapper">
     <div ref="scaler" class="map-scaler">
-      <ul id="map">
-		<li id="crs" estado="rs"><a href="#rs" id="rs" title="RS"><img src="img/null.gif" alt="RS" /></a></li>
-		<li id="csc" estado="sc"><a href="#sc" id="sc" title="SC"><img src="img/null.gif" alt="SC" /></a></li>
-		<li id="cpr" estado="pr"><a href="#pr" id="pr" title="PR"><img src="img/null.gif" alt="PR" /></a></li>
-		<li id="csp" estado="sp"><a href="#sp" id="sp" title="SP"><img src="img/null.gif" alt="SP" /></a></li>
-		<li id="cms" estado="ms"><a href="#ms" id="ms" title="MS"><img src="img/null.gif" alt="MS" /></a></li>
-		<li id="crj" estado="rj"><a href="#rj" id="rj" title="RJ"><img src="img/null.gif" alt="RJ" /></a></li>
-		<li id="ces" estado="es"><a href="#es" id="es" title="ES"><img src="img/null.gif" alt="ES" /></a></li>
-		<li id="cmg" estado="mg"><a href="#mg" id="mg" title="MG"><img src="img/null.gif" alt="MG" /></a></li>
-		<li id="cgo" estado="go"><a href="#go" id="go" title="GO"><img src="img/null.gif" alt="GO" /></a></li>
-		<li id="cdf" estado="df"><a href="#df" id="df" title="DF"><img src="img/null.gif" alt="DF" /></a></li>
-		<li id="cba" estado="ba"><a href="#ba" id="ba" title="BA"><img src="img/null.gif" alt="BA" /></a></li>
-		<li id="cmt" estado="mt"><a href="#mt" id="mt" title="MT"><img src="img/null.gif" alt="MT" /></a></li>
-		<li id="cro" estado="ro"><a href="#ro" id="ro" title="RO"><img src="img/null.gif" alt="RO" /></a></li>
-		<li id="cac" estado="ac"><a href="#ac" id="ac" title="AC"><img src="img/null.gif" alt="AC" /></a></li>
-		<li id="cam" estado="am"><a href="#am" id="am" title="AM"><img src="img/null.gif" alt="AM" /></a></li>
-		<li id="crr" estado="rr"><a href="#rr" id="rr" title="RR"><img src="img/null.gif" alt="RR" /></a></li>
-		<li id="cpa" estado="pa"><a href="#pa" id="pa" title="PA"><img src="img/null.gif" alt="PA" /></a></li>
-		<li id="cap" estado="ap"><a href="#ap" id="ap" title="AP"><img src="img/null.gif" alt="AP" /></a></li>
-		<li id="cma" estado="ma"><a href="#ma" id="ma" title="MA"><img src="img/null.gif" alt="MA" /></a></li>
-		<li id="cto" estado="to"><a href="#to" id="to" title="TO"><img src="img/null.gif" alt="TO" /></a></li>
-		<li id="cse" estado="se"><a href="#se" id="se" title="SE"><img src="img/null.gif" alt="SE" /></a></li>
-		<li id="cal" estado="al"><a href="#al" id="al" title="AL"><img src="img/null.gif" alt="AL" /></a></li>
-		<li id="cpe" estado="pe"><a href="#pe" id="pe" title="PE"><img src="img/null.gif" alt="PE" /></a></li>
-		<li id="cpb" estado="pb"><a href="#pb" id="pb" title="PB"><img src="img/null.gif" alt="PB" /></a></li>
-		<li id="crn" estado="rn"><a href="#rn" id="rn" title="RN"><img src="img/null.gif" alt="RN" /></a></li>
-		<li id="cce" estado="ce"><a href="#ce" id="ce" title="CE"><img src="img/null.gif" alt="CE" /></a></li>
-		<li id="cpi" estado="pi"><a href="#pi" id="pi" title="PI"><img src="img/null.gif" alt="PI" /></a></li>
-      </ul>
+			<ul id="map">
+				<li id="crs" estado="rs"><a href="#rs" id="rs" data-cod="43" data-name="Rio Grande do Sul" title="RS"><img src="img/null.gif" alt="RS" /></a></li>
+				<li id="csc" estado="sc"><a href="#sc" id="sc" data-cod="42" data-name="Santa Catarina" title="SC"><img src="img/null.gif" alt="SC" /></a></li>
+				<li id="cpr" estado="pr"><a href="#pr" id="pr" data-cod="41" data-name="Paraná" title="PR"><img src="img/null.gif" alt="PR" /></a></li>
+				<li id="csp" estado="sp"><a href="#sp" id="sp" data-cod="35" data-name="São Paulo" title="SP"><img src="img/null.gif" alt="SP" /></a></li>
+				<li id="cms" estado="ms"><a href="#ms" id="ms" data-cod="50" data-name="Mato Grosso do Sul" title="MS"><img src="img/null.gif" alt="MS" /></a></li>
+				<li id="crj" estado="rj"><a href="#rj" id="rj" data-cod="33" data-name="Rio de Janeiro" title="RJ"><img src="img/null.gif" alt="RJ" /></a></li>
+				<li id="ces" estado="es"><a href="#es" id="es" data-cod="32" data-name="Espírito Santo" title="ES"><img src="img/null.gif" alt="ES" /></a></li>
+				<li id="cmg" estado="mg"><a href="#mg" id="mg" data-cod="31" data-name="Minas Gerais" title="MG"><img src="img/null.gif" alt="MG" /></a></li>
+				<li id="cgo" estado="go"><a href="#go" id="go" data-cod="52" data-name="Goiás" title="GO"><img src="img/null.gif" alt="GO" /></a></li>
+				<li id="cdf" estado="df"><a href="#df" id="df" data-cod="53" data-name="Distrito Federal" title="DF"><img src="img/null.gif" alt="DF" /></a></li>
+				<li id="cba" estado="ba"><a href="#ba" id="ba" data-cod="29" data-name="Bahia" title="BA"><img src="img/null.gif" alt="BA" /></a></li>
+				<li id="cmt" estado="mt"><a href="#mt" id="mt" data-cod="51" data-name="Mato Grosso" title="MT"><img src="img/null.gif" alt="MT" /></a></li>
+				<li id="cro" estado="ro"><a href="#ro" id="ro" data-cod="11" data-name="Rondônia" title="RO"><img src="img/null.gif" alt="RO" /></a></li>
+				<li id="cac" estado="ac"><a href="#ac" id="ac" data-cod="12" data-name="Acre" title="AC"><img src="img/null.gif" alt="AC" /></a></li>
+				<li id="cam" estado="am"><a href="#am" id="am" data-cod="13" data-name="Amazonas" title="AM"><img src="img/null.gif" alt="AM" /></a></li>
+				<li id="crr" estado="rr"><a href="#rr" id="rr" data-cod="14" data-name="Roraima" title="RR"><img src="img/null.gif" alt="RR" /></a></li>
+				<li id="cpa" estado="pa"><a href="#pa" id="pa" data-cod="15" data-name="Pará" title="PA"><img src="img/null.gif" alt="PA" /></a></li>
+				<li id="cap" estado="ap"><a href="#ap" id="ap" data-cod="16" data-name="Amapá" title="AP"><img src="img/null.gif" alt="AP" /></a></li>
+				<li id="cma" estado="ma"><a href="#ma" id="ma" data-cod="21" data-name="Maranhão" title="MA"><img src="img/null.gif" alt="MA" /></a></li>
+				<li id="cto" estado="to"><a href="#to" id="to" data-cod="17" data-name="Tocantins" title="TO"><img src="img/null.gif" alt="TO" /></a></li>
+				<li id="cse" estado="se"><a href="#se" id="se" data-cod="28" data-name="Sergipe" title="SE"><img src="img/null.gif" alt="SE" /></a></li>
+				<li id="cal" estado="al"><a href="#al" id="al" data-cod="27" data-name="Alagoas" title="AL"><img src="img/null.gif" alt="AL" /></a></li>
+				<li id="cpe" estado="pe"><a href="#pe" id="pe" data-cod="26" data-name="Pernambuco" title="PE"><img src="img/null.gif" alt="PE" /></a></li>
+				<li id="cpb" estado="pb"><a href="#pb" id="pb" data-cod="25" data-name="Paraíba" title="PB"><img src="img/null.gif" alt="PB" /></a></li>
+				<li id="crn" estado="rn"><a href="#rn" id="rn" data-cod="24" data-name="Rio Grande do Norte" title="RN"><img src="img/null.gif" alt="RN" /></a></li>
+				<li id="cce" estado="ce"><a href="#ce" id="ce" data-cod="23" data-name="Ceará" title="CE"><img src="img/null.gif" alt="CE" /></a></li>
+				<li id="cpi" estado="pi"><a href="#pi" id="pi" data-cod="22" data-name="Piauí" title="PI"><img src="img/null.gif" alt="PI" /></a></li>
+			</ul>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref, onBeforeUnmount } from 'vue'
+	import { onMounted, ref, onBeforeUnmount } from 'vue'
+	import { eventBus } from '@/eventBus'
+	
+	const scaler = ref(null)
 
-const scaler = ref(null)
+	function aoClicarNoEstado({ cod, name }) {
+    eventBus.emit('estadoSelecionado', { cod, name })
+	}
 
-function aoClicarNoEstado(uf) {
-  console.log(`Você clicou em: ${uf}`)
-}
 
-function calcularScale() {
-  const larguraOriginal = 570
-  const wrapper = scaler.value?.parentElement
-  if (!wrapper || !scaler.value) return
-  const scale = wrapper.clientWidth / larguraOriginal
-  scaler.value.style.transform = `scale(${scale})`
-}
+	function calcularScale() {
+		const larguraOriginal = 570
+		const wrapper = scaler.value?.parentElement
+		if (!wrapper || !scaler.value) return
+		const scale = wrapper.clientWidth / larguraOriginal
+		scaler.value.style.transform = `scale(${scale})`
+	}
 
-onMounted(() => {
-  const links = document.querySelectorAll('ul#map li a')
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault()
-      aoClicarNoEstado(link.id)
-    })
-  })
+	onMounted(() => {
+		const links = document.querySelectorAll('ul#map li a')
+		links.forEach(link => {
+			link.addEventListener('click', e => {
+				e.preventDefault()
+				const cod = link.dataset.cod
+        const name = link.dataset.name
+        aoClicarNoEstado({ cod, name })
+			})
+		})
 
-  // Escala inicial
-  calcularScale()
+		calcularScale()
 
-  // Atualiza em redimensionamento
-  window.addEventListener('resize', calcularScale)
-})
+		window.addEventListener('resize', calcularScale)
+	})
 
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', calcularScale)
-})
+	onBeforeUnmount(() => {
+		window.removeEventListener('resize', calcularScale)
+	})
 </script>
 
 

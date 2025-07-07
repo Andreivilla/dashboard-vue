@@ -15,13 +15,20 @@
         windowName="Mapa" 
         class="map-container"
       />
-
-      <DashBoardItemContainer v-if="resutRankingGeral"
-        :childComponent="RankingNames" 
-        windowName="Ranking de nomes no brasil" 
-        class="ranking-geral-container" 
-        :childProps="{data:resutRankingGeral}"
-      />
+      <div class="rankings-container">
+        <DashBoardItemContainer v-if="resutRankingGeral"
+          :childComponent="RankingNames" 
+          windowName="Ranking geral" 
+          class="ranking-geral" 
+          :childProps="{data:resutRankingGeral}"
+        />
+        <DashBoardItemContainer v-if="resutRankingSelect"
+          :childComponent="RankingNames" 
+          :windowName="`Ranking de nomes em ${selectStatename}`"
+          class="ranking-geral-a" 
+          :childProps="{data:resutRankingSelect}"
+        />
+      </div>
 
     </div>
 
@@ -40,22 +47,27 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { eventBus } from '@/eventBus'
+  import { ref, onMounted, onBeforeUnmount } from 'vue';
   import BrazilianMap from './BrazilianMap.vue';
   import DashBoardItemContainer from './DashBoardItemContainer.vue';
   import BarGraph from './BarGraph.vue';
-  import { getNameFreq, addPercentFreq, getNameRankingGeral } from '@/services/ibgeService';
+  import { getNameFreq, addPercentFreq, getNameRankingGeral, getNameRankingUF } from '@/services/ibgeService';
   import RankingNames from './RankingNames.vue';
 
   const name = ref('');
   const resultName = ref(null);//pode me apagar dps e tudo que envolve tem que passar direto pro graph
   const resutRankingGeral = ref(null);
 
+  const selectState = ref(null);
+  const selectStatename = ref(null);
+  const resutRankingSelect = ref(null);
+
   async function getFreq() {
     try {
       const data = await getNameFreq(name.value);
       console.log('Dados do IBGE:', data);
-      resultName.value = addPercentFreq(data); // <- salva os dados aqui
+      resutRankingSelect.value = addPercentFreq(data); // <- salva os dados aqui
       return data;
     } catch (error) {
       console.error('Erro ao buscar os dados:', error);
@@ -78,14 +90,45 @@
     }
   }
 
+  async function getNameRankingStateFront() {
+    try{
+      resutRankingSelect.value = await getNameRankingUF(selectState.value.cod);
+      console.log('ranking select:', resutRankingSelect)
+    } catch (error){
+      console.error('Erro ao buscar dado', error);
+    }
+  }
+  
   onMounted(() =>{
     getNameRankingGeralFront();
-
+    eventBus.on('estadoSelecionado', lidarComUF)
   })
+
+  onBeforeUnmount(() => {
+    eventBus.off('estadoSelecionado', lidarComUF)
+  })
+
+  function lidarComUF(uf) {
+    selectState.value = uf;
+    console.log('Outro componente recebeu o UF:', selectState.value.cod)
+    console.log('Outro componente recebeu o name:', selectState.value.name)
+    selectStatename.value = selectState.value.name;
+    getNameRankingStateFront();
+  }
 
 </script>
 
 <style scoped>
+.ranking-geral {
+  width: 200px;
+}
+.ranking-geral-a {
+  width: 200px;
+}
+.rankings-container {
+  display: flex;
+}
+
 
 .name-container {
   display: flex;
