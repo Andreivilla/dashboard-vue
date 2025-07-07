@@ -25,14 +25,14 @@
     background-color: var(--bg-secondary-color);
     padding-top: 20px;
     color: white;
-    min-height: 100vh; 
+    min-height: 90vh; 
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
     border-radius: 25px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+   
   }
 
   .sidebar ul {

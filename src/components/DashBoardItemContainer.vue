@@ -4,7 +4,7 @@
       <h2>{{ windowName }}</h2>
     </div>
     <div class="content-container">
-      <component :is="childComponent" />
+      <component :is="childComponent" v-bind="childProps" />
     </div>
   </div>
 </template>
@@ -20,6 +20,10 @@
     windowName: {
       type: String,
       required: true
+    },
+    childProps: {
+      type: Object,
+      default: () => ({})
     }
   })
 
@@ -39,6 +43,8 @@
     border-radius: 8px;
     background: var(--bg-secondary-color);
     box-shadow: var(--box-shadow);
+    padding: 8px;
+    margin: 12px;
 
   } 
   .name-container {

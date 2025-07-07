@@ -10,6 +10,8 @@
 
   --radial-dark-gradient: radial-gradient(circle, var(--bg-main-color) 0%, var(--primary-color) 100%);
 
+  --primary-gradient: linear-gradient(#F9D78F, #BE7F40);
+
   --bottom-gradient: linear-gradient(45deg, #7D48F0 0%, #281453 10%, transparent 100%);
   --gray-color: #111111;
 
