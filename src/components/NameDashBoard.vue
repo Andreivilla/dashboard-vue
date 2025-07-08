@@ -117,7 +117,7 @@
 
 <style scoped>
   .ranking {
-    width: 200px;
+    width: 270px;
   }
 
   .rankings-container {
@@ -135,7 +135,7 @@
   }
 
   .map-container {
-    height: 560px;
+    height: 600px;
     width: 500px;
     padding-bottom: 28px;
   }
@@ -148,6 +148,7 @@
   form {
     display: flex;
     gap: 10px;
+    margin-left: 10px;
   }
 
   input {
@@ -172,7 +173,7 @@
   }
 
   svg {
-    fill: var(--primary-color);
+    fill: var(--search-color);
     height: 32px;
     width: 32px;
   }

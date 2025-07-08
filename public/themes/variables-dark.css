@@ -4,6 +4,10 @@
   --bg-secondary-color: #1F1F20;
   --main-color: white;
   --primary-color: #C37E40;
+
+  --search-color: var(--primary-color);
+  --toogle-hover-color: var(--primary-color);
+
   --dark-color: #130D1B;
 
   --box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);  

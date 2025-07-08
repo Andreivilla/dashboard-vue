@@ -56,7 +56,6 @@ onMounted(() => {
 <style scoped>
   button {
     cursor: pointer;
-    padding: 0.6rem 1.1rem;
     background: var(--bg-secondary-color);
     border: none;
   }
@@ -64,6 +63,6 @@ onMounted(() => {
     fill: var(--main-color);
   }
   svg:hover {
-    fill: var(--primary-color);
+    fill: var(--toogle-hover-color);
   }
 </style>
