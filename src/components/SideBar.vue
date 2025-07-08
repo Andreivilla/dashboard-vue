@@ -1,6 +1,6 @@
 <template>
   <nav class="sidebar">
-    <img src="" alt="user image">
+    <img :src="logo" alt="Logo" />
     <ul>
       <li><a href="#">
         <CircleBtn>
@@ -17,6 +17,8 @@
 <script setup>
   import ThemeToggle from './ThemeToggle.vue';
   import CircleBtn from './CircleBtn.vue';
+  import logo from '@/assets/images/logo.png'
+
 </script>
 
 <style scoped>

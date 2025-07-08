@@ -1,6 +1,6 @@
 <template>
   <div class="name-container">
-    <form action="" @submit.prevent="defineName">
+    <form action="" @submit.prevent="nameSubmit">
       <input v-model="name" type="text" placeholder="Digite seu nome" />
       <button type="submit">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -19,13 +19,13 @@
         <DashBoardItemContainer v-if="resutRankingGeral"
           :childComponent="RankingNames" 
           windowName="Ranking geral" 
-          class="ranking-geral" 
+          class="ranking" 
           :childProps="{data:resutRankingGeral}"
         />
         <DashBoardItemContainer v-if="resutRankingSelect"
           :childComponent="RankingNames" 
           :windowName="`Ranking de nomes em ${selectStatename}`"
-          class="ranking-geral-a" 
+          class="ranking" 
           :childProps="{data:resutRankingSelect}"
         />
       </div>
@@ -66,8 +66,7 @@
   async function getFreq() {
     try {
       const data = await getNameFreq(name.value);
-      console.log('Dados do IBGE:', data);
-      resutRankingSelect.value = addPercentFreq(data); // <- salva os dados aqui
+      resultName.value = addPercentFreq(data); // <- salva os dados aqui
       return data;
     } catch (error) {
       console.error('Erro ao buscar os dados:', error);
@@ -75,9 +74,7 @@
     }
   }
 
-  async function defineName() {
-    console.log('Nome: ', name.value);
-
+  async function nameSubmit() {
     const resultName = await getFreq(); // <-- AQUI você espera o valor real
     console.log('ResultName final:', resultName);
   }
@@ -119,67 +116,72 @@
 </script>
 
 <style scoped>
-.ranking-geral {
-  width: 200px;
-}
-.ranking-geral-a {
-  width: 200px;
-}
-.rankings-container {
-  display: flex;
-}
+  .ranking {
+    width: 200px;
+  }
 
+  .rankings-container {
+    display: flex;
+  }
 
-.name-container {
-  display: flex;
-  flex-direction: column;
-}
+  .name-container {
+    display: flex;
+    flex-direction: column;
+  }
 
-.top-dashboard{
-  display: flex;
-  flex-direction: row;
-}
+  .top-dashboard{
+    display: flex;
+    flex-direction: row;
+  }
 
-.map-container {
-  height: 560px;
-  width: 500px;
-  padding-bottom: 28px;
-}
+  .map-container {
+    height: 560px;
+    width: 500px;
+    padding-bottom: 28px;
+  }
 
-.graph-container {
-  height: 100%;
-  margin-bottom: 0;
-}
+  .graph-container {
+    height: 100%;
+    margin-bottom: 0;
+  }
 
-form {
-  display: flex;
-  gap: 10px;
-}
+  form {
+    display: flex;
+    gap: 10px;
+  }
 
-input {
-  all: unset;
-  padding: 8px;
-  font-size: 16px;
-  background-color: var(--bg-secondary-color);
-  border-color: var(--bg-secondary-color);
-  border-radius: 25px;
-  color: var(--primary-color);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-  width: 70%;
-}
+  input {
+    all: unset;
+    padding: 8px;
+    font-size: 16px;
+    background-color: var(--bg-secondary-color);
+    border-color: var(--bg-secondary-color);
+    border-radius: 25px;
+    color: var(--primary-color);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 40%;
+  }
 
-button {
-  all: unset;
-  border: none;
-  cursor: pointer;  
-}
-button:hover {
-  transform: translateY(-3px) scale(1.05);
-}
+  button {
+    all: unset;
+    border: none;
+    cursor: pointer;  
+  }
+  button:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
 
-svg {
-  fill: var(--primary-color);
-  height: 32px;
-  width: 32px;
-}
+  svg {
+    fill: var(--primary-color);
+    height: 32px;
+    width: 32px;
+  }
+
+  @media (max-width: 768px) {
+  /* Regras para mobile e tablets */
+    .top-dashboard {
+      flex-direction: column;
+    }
+    
+  }
 </style>

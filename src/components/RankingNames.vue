@@ -2,7 +2,7 @@
   <div class="ranking-container">
     <ul>
       <li v-for="item in data[0].res" :key="item.ranking">
-        <strong>#{{ item.ranking }}</strong> - {{ item.nome }} ({{ item.frequencia.toLocaleString('pt-BR') }} ocorrências)
+        <strong>{{ item.ranking }}</strong>  {{ item.nome }} {{ item.frequencia.toLocaleString('pt-BR') }}
       </li>
     </ul>
   </div>
