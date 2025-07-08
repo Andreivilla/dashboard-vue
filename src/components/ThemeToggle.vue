@@ -33,7 +33,8 @@ const applyTheme = () => {
   link = document.createElement('link')
   link.id = 'theme-stylesheet'
   link.rel = 'stylesheet'
-  link.href = `/themes/variables-${theme}.css`
+  link.href = `${process.env.BASE_URL}themes/variables-${theme}.css`
+
   document.head.appendChild(link)
 }
 
