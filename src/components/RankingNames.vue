@@ -43,4 +43,8 @@
     
     color: var(--primary-color);
   }
+
+  .ranking-container ul::-webkit-scrollbar {
+    width: 6px;
+  }
 </style>
