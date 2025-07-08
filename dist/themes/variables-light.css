@@ -1,0 +1,23 @@
+@import url(@assets/fonts/fonts.css);
+:root {
+  --bg-main-color: #C37E40;
+  --bg-secondary-color: white;
+  --main-color: #C37E40;
+  --primary-color: #C37E40;
+  --dark-color: #130D1B;
+
+  --search-color: white;
+  --toogle-hover-color: orange;
+
+  --box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);  
+
+  --radial-dark-gradient: radial-gradient(circle, var(--bg-main-color) 0%, var(--primary-color) 100%);
+
+  --primary-gradient: linear-gradient(#F9D78F, #BE7F40);
+
+  --bottom-gradient: linear-gradient(45deg, #7D48F0 0%, #281453 10%, transparent 100%);
+  --gray-color: #111111;
+
+  --primary-font-family: 'Montserrat', sans-serif;
+}
+/*#D79F52*/
